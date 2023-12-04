@@ -3,21 +3,23 @@ body{
 }
 
 .conteiner{
-    color: violet;
-    margin-left: 40%;
+    color: blue;
+    margin-left: 32%;
+    font-size: 230%;
 }
 
 input{
-    color: violet;
-    margin-left: 40%;
-
-    
+    color: blue;
+    font-size: 120%;
 }
 
 h1{
     color: rgb(0, 0, 0);
-    margin-left: 40%;
+    margin-left: 39%;
     font-size: 250%;
 }
 
-
+.btn{
+    color: black;
+    margin-left: 65%;
+}
