@@ -1,0 +1,23 @@
+body{
+    background-color: rgb(201, 243, 229);
+}
+
+.conteiner{
+    color: violet;
+    margin-left: 40%;
+}
+
+input{
+    color: violet;
+    margin-left: 40%;
+
+    
+}
+
+h1{
+    color: rgb(0, 0, 0);
+    margin-left: 40%;
+    font-size: 250%;
+}
+
+
