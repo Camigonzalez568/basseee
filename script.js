@@ -1,24 +1,24 @@
-const { MongoClient } = require('mongodb');
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const port = 4400;
 
-// Reemplaza la siguiente cadena de conexión con la tuya desde MongoDB Atlas
-const uri = 'mongodb+srv://ccamigonzalez232:<48537645>@cluster0.aihcmbh.mongodb.net/';
+// Conectar MongoDB
+mongoose.connect('mongodb+srv://clgonzalez:48537645aA@clusterr.xffnu0h.mongodb.net/', {
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+})
+    .then(() => {
+        console.log('Conexión exitosa a MongoDB');
+    })
+    .catch((err) => {
+        console.error('Error al conectar a MongoDB:', err);
+    });
 
-async function conectarMongoDB() {
-  try {
-    // Conectar a la base de datos
-    await client.connect();
+// Middleware para analizar solicitudes JSON entrantes
+app.use(express.json());
 
-    console.log('Conexión exitosa a MongoDB Atlas');
+// Tus rutas y otro middleware se pueden agregar aquí
 
-    // Aquí puedes realizar operaciones en tu base de datos
-
-  } finally {
-    // Asegúrate de cerrar la conexión cuando hayas terminado
-    await client.close();
-  }
-}
-
-// Llama a la función para conectar MongoDB
-conectarMongoDB();
+app.listen(port, () => {
+    console.log('El servidor está escuchando en el puerto', port);
+});
