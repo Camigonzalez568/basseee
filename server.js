@@ -1,23 +1,33 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const bodyparser = require('body-parser');
-const datos = require('./schema'); 
+const datosSchema = require('./modelo/schema'); 
+const bodyParser = require('body-parser');
 const port = 3000;
 
-const data = {
-    username : String,
-    surname  :  String,
-     age     :  Number,
-  };
+app.use(bodyParser.json());
 
-app.post('/datos', (req,res) => {
-    console.log(req.body);
-    res.send('Datos recibidos con exitoo')
+const Datos = mongoose.model('Datos', datosSchema);
+
+module.exports = Datos
+
+
+ app.post('/datos', async (req, res) => {
+    try {
+        // Crear una nueva instancia del modelo Datos con los datos del cuerpo de la solicitud
+        const nuevosDatos = new Datos(req.body);
+        // Guardar los nuevos datos en la base de datos
+        await nuevosDatos.save();
+        console.log('Datos recibidos con éxito:', req.body);
+        res.send('Datos recibidos con éxito');
+    } catch (error) {
+        console.error('Error al procesar la solicitud:', error);
+        res.status(500).send('Error interno del servidor');
+    }
 });
 
 mongoose.connect('mongodb+srv://clgonzalez:1234@cluster0.nkl5shc.mongodb.net/', {
-    useNewUrlParser: false,
+    useNewUrlParser: true,
     useUnifiedTopology: true,
 
 })
