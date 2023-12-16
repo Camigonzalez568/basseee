@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const Schema = mongoose.Schema;
 
-const Datos = require('../server');
-
-const schema = new Schema({
+const datosSchema = new Schema({
     username : String,
     surname  :  String,
      age     :  Number,
 });
 
+const Datos = mongoose.model('Datos', datosSchema);
 
-module.exports = schema;
+module.exports = Datos;
