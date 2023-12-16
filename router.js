@@ -48,4 +48,18 @@ router.put('/datos/:id', async (req, res) => {
     }
 });
 
+
+router.delete('/datos/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const resultado = await schema.findByIdAndDelete(id);
+        if(!resultado) {
+           return res.status(404).json({ message : 'Dato no encontrado'});
+    } 
+    res.status(200).json({ message :'Dato eliminado correctamente'});
+ } catch (error) {
+        res.status(500).json({ error : error.message });
+    }
+});
+
 module.exports = router;
