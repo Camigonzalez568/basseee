@@ -1,10 +1,12 @@
 body{
     background-color: rgb(201, 243, 229);
+    display: flex;
 }
 
-.conteiner{
+.conteiner{  
     color: blue;
-    margin-left: 32%;
+    margin-top: 10%;
+    margin-left: -18%;
     font-size: 230%;
 }
 
