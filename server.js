@@ -4,17 +4,14 @@ const bodyParser = require('body-parser');
 const router= require('./router')
 
 const app = express();
-const port = 5500;
+const port = 3000;
 
 app.use(express.json());
 app.use(bodyParser.json());
 
 app.use('/', router);
 
-mongoose.connect('mongodb+srv://clgonzalez:1234@cluster0.nkl5shc.mongodb.net/', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+mongoose.connect('mongodb+srv://clgonzalez:1234@cluster0.nkl5shc.mongodb.net/')
     .then(() => {
       console.log('Conexión exitosa a MongoDB');
     })
